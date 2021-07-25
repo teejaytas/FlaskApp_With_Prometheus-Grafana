@@ -1,0 +1,12 @@
+version: "3.5"
+
+
+
+services:
+  flask-api:
+    build:
+      context: .
+    restart: unless-stopped
+    container_name: my-appi
+    ports:
+      - 5000:5000
