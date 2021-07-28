@@ -1,11 +1,16 @@
+import logging
 from flask import Flask, render_template, request, redirect  # add
 from flask_sqlalchemy import SQLAlchemy  # add
 from datetime import datetime  # add
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'  # add
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False  # add
 db = SQLAlchemy(app)  # add
+
+metrics = PrometheusMetrics(app)
+metrics.info("app_info", "App Info, this can be anything you want", version="1.0.0")
 
 # add
 
@@ -61,4 +66,4 @@ def update(id):
 
 
 if __name__ == "__main__":
-   app.run(debug=True,port=5000)
+   app.run(debug=False,host='0.0.0.0',port=5000)
