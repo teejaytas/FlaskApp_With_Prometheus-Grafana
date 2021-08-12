@@ -9,7 +9,7 @@ Flask runs at port 5000.
 Grafana runs at port 3000.
 
 To Run?
-docker-compose up -d
+docker-compose up -d                                                                
 docker-compose -f docker-compose.yml up
 
 Check: 127.0.0.1:9090
